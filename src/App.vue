@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="bg-gray-100 min-h-screen flex justify-center items-center">
+  <div id="app" class="bg-white min-h-screen flex justify-center items-center">
     <ProductWidgets />
   </div>
 </template>
