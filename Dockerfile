@@ -1,20 +1,20 @@
-# Use official Node.js image as the base image
-FROM node:latest
+# Use an official Node runtime as the base image
+FROM node:14
 
-# Set working directory inside the container
+# Set the working directory in the container
 WORKDIR /app
 
-# Copy package.json and package-lock.json to work directory
+# Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
 # Install dependencies
 RUN npm install
 
-# Copy all files to work directory
+# Copy the rest of the application code to the working directory
 COPY . .
 
-# Expose port 8080 to the outside world
-EXPOSE 8080
+# Expose port 3000 to the outside world
+EXPOSE 3000
 
-# Command to run the application
-CMD ["npm", "run", "serve"]
+# Command to run the application in watch mode
+CMD ["npm", "run", "serve", "--", "--watch"]
