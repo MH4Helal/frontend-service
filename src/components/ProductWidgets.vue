@@ -18,13 +18,15 @@
         <div class="flex w-full justify-between items-center mt-4">
           <div class="flex items-center relative">
             <p class="text-sm text-[#3B755F] relative">Link to public profile
-              <span class="tooltip-icon" @mouseover="showTooltip = true" @mouseleave="showTooltip = false">ⓘ
-                <div class="tooltip" v-if="showTooltip">
-                  <p>This is a tooltip</p>
-                </div>
-              </span>
+              <span class="text-[10px] absolute -top-[5px] pl-1" @mouseover="showTooltip = true">ⓘ</span>
             </p>
+            <div class="absolute bg-white p-5 rounded-sm transition-opacity z-20 -left-[140px] w-screen max-w-[248px]" @mouseleave="hideTooltip" v-if="showTooltip">
+              <p class="text-sm">This widget links directly to your public profile so that you can easily share your impact with your customers. Turn it off here if you do not want the badge to link to it.</p>
+              <a class="text-[#3B755F] font-bold" href="https://www.google.com" target="_blank">View Public Profile</a>
+            </div>
           </div>
+
+          
           
           <!-- Checkbox with hover effect -->
           <div class="flex items-center relative">
@@ -124,7 +126,7 @@ export default {
         default:
           return color;
       }
-    }
+    },
   }
 };
 </script>
