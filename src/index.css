@@ -4,7 +4,7 @@
 
 @layer base {
     
-
+     
 
   [type="checkbox"] {
     @apply w-11 h-0 cursor-pointer inline-block;
@@ -20,15 +20,15 @@
     @apply after:block before:inline-block;
     @apply before:rounded-full after:rounded-full;
 
-    @apply after:content-[''] after:w-5 after:h-5 after:mt-0.5 after:ml-0.5;
+    @apply after:content-[''] after:w-5 after:h-5 after:border-[0.68px] after:border-[#F2EBDB]/100;
     @apply after:shadow-md after:duration-100;
 
-    @apply before:content-[''] before:w-10 before:h-full before:shadow-[inset_0_0_3px_rgba(0,0,0,0.6)];
+    @apply before:content-[''] before:w-10 before:border-[0.68px] before:border-[#AFC6BD]/100 before:h-full before:shadow-[inset_0_0_2px_rgba(0,0,0,0.3)];
 
-    @apply after:bg-white;
-    @apply before:bg-gray-300;
-    @apply before:checked:bg-lime-500;
-    @apply checked:after:duration-300 checked:after:translate-x-4;
+    @apply after:bg-[#F9F9F9];
+    @apply before:bg-[#F9F9F9];
+    @apply before:checked:bg-[#3B755F] before:checked:border-[#B0B0B0];
+    @apply after:checked:duration-300 after:checked:translate-x-5  after:checked:border-[#3B755F];
 
     @apply disabled:after:bg-opacity-75 disabled:cursor-not-allowed;
     @apply disabled:checked:before:bg-opacity-40;

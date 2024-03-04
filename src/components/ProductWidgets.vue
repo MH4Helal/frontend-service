@@ -54,8 +54,8 @@
         <!-- Activate badge toggle -->
         <div class="flex w-full justify-between items-center mt-4">
           <p class="text-sm text-[#3B755F]">Activate badge</p>
-          <label :for="widget.id" class="h-6 w-10 relative inline-block">
-            <input :id="widget.id" type="checkbox" />
+          <label :for="widget.id" class="h-5 w-10 relative inline-block">
+            <input :id="widget.id" type="checkbox" :checked="widget.active" class="hover:after:ring-[6px] hover:after:ring-[#AFC6BD]/50" />
           </label>
         </div>
 
@@ -142,6 +142,7 @@ export default {
           return color;
       }
     },
+
     showTooltip(widgetId) {
       this.tooltipVisibility[widgetId] = true;
     },
