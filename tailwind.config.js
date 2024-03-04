@@ -5,6 +5,9 @@ export default {
     ],
     theme: {
       extend: {
+        fontFamily: {
+          'sans': ['Cabin', 'sans-serif'],
+        },
       },
     },
     plugins: [],

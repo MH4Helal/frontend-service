@@ -1,3 +1,128 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.color-box {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  .color-box:hover {
+    filter: brightness(80%);
+  }
+  
+  .selected {
+    border: 2px solid #B0B0B0; /* Apply gray-500 color to the border of the selected color box */
+    box-sizing: border-box;
+  }
+  .control {
+      font-family: arial;
+      display: block;
+      position: relative;
+      padding-left: 30px;
+      margin-bottom: 5px;
+      padding-top: 3px;
+      cursor: pointer;
+      font-size: 16px;
+  }
+      .control input {
+          position: absolute;
+          z-index: -1;
+          opacity: 0;
+      }
+  .control_indicator {
+      position: absolute;
+      top: -5px;
+      left: 10px;
+      height: 20px;
+      width: 20px;
+      background: #e6e6e6;
+      border: 2px solid #000000;
+      border-radius: 2px;
+  }
+  .control:hover input ~ .control_indicator,
+  .control input:focus ~ .control_indicator {
+      background: #afc6bd;
+  }
+  
+  .control input:checked ~ .control_indicator {
+      background: #3B755F;
+      border: none;
+  }
+  .control:hover input:not([disabled]):checked ~ .control_indicator,
+  .control input:checked:focus ~ .control_indicator {
+      background: #3B755F ;
+      border: none;
+  }
+  .control_indicator:after {
+      box-sizing: unset;
+      content: '';
+      position: absolute;
+      display: none;
+  }
+  .control input:checked ~ .control_indicator:after {
+      display: block;
+  }
+  .control-checkbox .control_indicator:after {
+      left: 8px;
+      top: 4px;
+      width: 3px;
+      height: 8px;
+      border: solid #ffffff;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+  }
+  .control-checkbox input:disabled ~ .control_indicator:after {
+      border-color: #7b7b7b;
+  }
+  .control-checkbox .control_indicator::before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 4.5rem;
+      height: 4.5rem;
+      margin-left: -1.8rem;
+      margin-top: -1.6rem;
+      background: #afc6bd;
+      border-radius: 3rem;
+      opacity: 0.6;
+      z-index: 99999;
+      transform: scale(0);
+  }
+  @keyframes s-ripple {
+      0% {
+          transform: scale(0);
+      }
+      20% {
+          transform: scale(1);
+      }
+      100% {
+          opacity: 0;
+          transform: scale(1);
+      }
+  }
+  @keyframes s-ripple-dup {
+     0% {
+         transform: scale(0);
+      }
+     30% {
+          transform: scale(1);
+      }
+      60% {
+          transform: scale(1);
+      }
+      100% {
+          opacity: 0;
+          transform: scale(1);
+      }
+  }
+  .control-checkbox input + .control_indicator::before {
+      animation: s-ripple 250ms ease-out;
+  }
+  .control-checkbox input:checked + .control_indicator::before {
+      animation-name: s-ripple-dup;
+  }
