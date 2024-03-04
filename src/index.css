@@ -2,8 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    
+
+
+  [type="checkbox"] {
+    @apply w-11 h-0 cursor-pointer inline-block;
+    @apply focus:outline-0;
+    @apply border-0;
+    @apply focus:ring-offset-transparent;
+    @apply focus:ring-transparent;
+    @apply focus-within:ring-0;
+    @apply focus:shadow-none;
+    
+    @apply after:absolute before:absolute;
+    @apply after:top-0 before:top-0;
+    @apply after:block before:inline-block;
+    @apply before:rounded-full after:rounded-full;
+
+    @apply after:content-[''] after:w-5 after:h-5 after:mt-0.5 after:ml-0.5;
+    @apply after:shadow-md after:duration-100;
+
+    @apply before:content-[''] before:w-10 before:h-full before:shadow-[inset_0_0_3px_rgba(0,0,0,0.6)];
+
+    @apply after:bg-white;
+    @apply before:bg-gray-300;
+    @apply before:checked:bg-lime-500;
+    @apply checked:after:duration-300 checked:after:translate-x-4;
+
+    @apply disabled:after:bg-opacity-75 disabled:cursor-not-allowed;
+    @apply disabled:checked:before:bg-opacity-40;
+  }
+
+}
+
 .tooltip {
-    transition: opacity 0.7s ease; /* CSS transition for opacity */
+    transition: opacity 0.3s ease; /* CSS transition for opacity */
   }
 
 .color-box {

@@ -15,7 +15,7 @@
         <!-- Widget menu -->
         <div class="flex w-full justify-between items-center mt-4">
           <div class="flex items-center relative">
-            <div class="text-sm text-[#3B755F] relative">Link to public profile
+            <div class="text-sm text-[#3B755F] relative">Link to Public Profile
               <div class="absolute -top-[5px] pl-1 cursor-pointer h-100 -right-[25px] w-[25px]"
                 @mouseover="showTooltip(widget.id), clearHideTooltipTimeout"
                 @mouseleave="startHideTooltipTimeout(widget.id)"
@@ -23,8 +23,8 @@
                 <span class="text-[14px]">ⓘ</span>
               </div>
               <div
-              class="tooltip flex flex-col gap-4 absolute bg-white p-5 rounded-sm z-20 w-screen max-w-[248px] transition-opacity duration-[700ms] -left-[30px]"
-              :class="{ '-z-10 opacity-0': !tooltipVisibility[widget.id]}"
+              class="tooltip flex flex-col gap-4 absolute bg-white p-5 rounded-sm z-20 w-screen max-w-[248px] transition-opacity duration-[300ms] -left-[30px]"
+              :class="{ '!-z-10 opacity-0': !tooltipVisibility[widget.id]}"
               :data-widget="widget.id"  
               @mouseover="clearHideTooltipTimeout" 
               @mouseleave="startHideTooltipTimeout(widget.id)">
@@ -50,6 +50,15 @@
             <div v-for="(color, index) in colors" :key="index + color" :class="{ 'color-box': true, 'selected': widget.selectedColor === translateToHex(color) }" :style="{ backgroundColor: translateToHex(color) }" @click="selectColor(widget, color)" @mouseover="hoverColor(translateToHex(color))" @mouseleave="unhoverColor(translateToHex(color))"></div>
           </div>
         </div>
+
+        <!-- Activate badge toggle -->
+        <div class="flex w-full justify-between items-center mt-4">
+          <p class="text-sm text-[#3B755F]">Activate badge</p>
+          <label :for="widget.id" class="h-6 w-10 relative inline-block">
+            <input :id="widget.id" type="checkbox" />
+          </label>
+        </div>
+
       </div>
     </div>
   </div>
@@ -142,7 +151,7 @@ export default {
       if (tooltip) { 
         setTimeout(() => {
           this.tooltipVisibility[widgetId] = false;
-        }, 700); 
+        }, 300); 
       }
     },
 
