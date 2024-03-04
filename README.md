@@ -14,12 +14,12 @@ npm install
 npm run serve --watch
 ```
 
-### Compiles and minifies for production
+### Compile and minify for production
 ```
 npm run build
 ```
 
-### Lints and fixes files
+### Lint and fix files
 ```
 npm run lint
 ```
