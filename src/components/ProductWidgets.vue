@@ -1,10 +1,10 @@
 <template>
   <div class="flex flex-col justify-center w-full max-w-[331px] lg:max-h-[419px] lg:max-w-[851px] bg-gray-200 py-12 lg:pb-24 px-8 rounded-md shadow-2xl">
     <h1 class="w-full text-3xl text-left font-bold mb-3 border-b-2 border-b-gray-300 pb-2 font-body self-start">Per Product Widgets</h1>
-    <div class="grid grid-rows-3 lg:grid-rows-none lg:grid-cols-3 gap-4 self-center w-full">
-      <div v-for="widget in widgets" :key="widget.id" class="flex flex-col items-start justify-center w-full">
+    <div class="grid grid-rows-3 lg:grid-rows-none lg:grid-cols-3 gap-4 self-center w-full justify-center justify-items-center">
+      <div v-for="widget in widgets" :key="widget.id" class="flex flex-col items-start justify-center w-full max-w-[221px]">
         <!-- Color Banner -->
-        <div :style="{ backgroundColor: widget.selectedColor, color: getTextColor(widget.selectedColor)}" class="color-banner flex items-center justify-center gap-[10px] w-full h-24 rounded-md mb-4 px-5 transition-all duration-500">
+        <div :style="{ backgroundColor: widget.selectedColor, color: getTextColor(widget.selectedColor)}" class="color-banner flex items-center justify-start gap-[20px] w-full h-24 rounded-md mb-4 px-5 transition-all duration-500">
           <img :src="require('@/assets/' + getLogoColor(widget.selectedColor))" alt="Logo" class="w-[40px] h-[40px]">
           <div class="flex flex-col items-start justify-center">
             <p class="text-[12.41px]">This product {{ widget.action }}</p>
@@ -35,13 +35,12 @@
           </div>
 
           <!-- Checkbox with hover effect -->
-          <div class="flex items-center relative">
-            <label class="control control-checkbox">
+          <div class="flex items-center relative h-[20px]">
+            <label class="control control-checkbox group h-full">
               <input type="checkbox" v-model="widget.linked" class="hidden" :checked="widget.linked" />
-              <div class="group absolute -top-[5px] left-[10px]">
                 <div class="control_indicator z-10 relative"></div>
-                <div class="absolute inset-0 rounded-full border-2 border-transparent group-hover:ring-[8px] group-hover:ring-[#AFC6BD]/50 group-hover:transition-opacity group-hover:duration-500 z-0"></div>
-              </div>
+                <div class="w-[20px] h-[20px] top-[3px] left-[10px] absolute inset-0 rounded-full group-hover:ring-[10px] group-hover:ring-[#AFC6BD]/50 duration-300"></div>
+
             </label>
           </div>
         </div>
