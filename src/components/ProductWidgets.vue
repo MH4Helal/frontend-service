@@ -16,15 +16,15 @@
         <div class="flex w-full justify-between items-center mt-4">
           <div class="flex items-center relative">
             <div class="text-sm text-[#3B755F] relative">Link to public profile
-              <span
-                class="text-[14px] absolute -top-[5px] pl-1 cursor-pointer"
+              <div class="absolute -top-[5px] pl-1 cursor-pointer h-100 -right-[25px] w-[25px]"
                 @mouseover="showTooltip(widget.id), clearHideTooltipTimeout"
                 @mouseleave="startHideTooltipTimeout(widget.id)"
-                @click.stop="showTooltip(widget.id), clearHideTooltipTimeout"
-              >ⓘ</span>
+                @click.stop="showTooltip(widget.id), clearHideTooltipTimeout">
+                <span class="text-[14px]">ⓘ</span>
+              </div>
               <div
               class="tooltip flex flex-col gap-4 absolute bg-white p-5 rounded-sm z-20 w-screen max-w-[248px] transition-opacity duration-[700ms] -left-[30px]"
-              :class="{ '-z-10 opacity-0': !tooltipVisibility[widget.id], 'opacity-100': tooltipVisibility[widget.id] }"
+              :class="{ '-z-10 opacity-0': !tooltipVisibility[widget.id]}"
               :data-widget="widget.id"  
               @mouseover="clearHideTooltipTimeout" 
               @mouseleave="startHideTooltipTimeout(widget.id)">
@@ -138,7 +138,12 @@ export default {
     },
 
     hideTooltip(widgetId) {
-      this.tooltipVisibility[widgetId] = false;
+      const tooltip = document.querySelector(`.tooltip[data-widget="${widgetId}"]`);
+      if (tooltip) { 
+        setTimeout(() => {
+          this.tooltipVisibility[widgetId] = false;
+        }, 700); 
+      }
     },
 
 
@@ -146,7 +151,7 @@ export default {
       // Set a timeout to hide the tooltip after a delay
       this.hideTooltipTimeout = setTimeout(() => {
         this.hideTooltip(widgetId);
-      }, 500); // Adjust the delay as needed (500 milliseconds in this example)
+      }, 100); 
     },
     clearHideTooltipTimeout() {
       // Clear the timeout to prevent hiding the tooltip
